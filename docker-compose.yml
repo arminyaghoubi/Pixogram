@@ -1,0 +1,52 @@
+services:
+  kafka:
+    image: docker.io/bitnami/kafka:4.0
+    networks:
+        - pixogram
+    ports:
+      - "9092:9092"
+    volumes:
+      - "kafka_data:/bitnami"
+    environment:
+      # KRaft settings
+      - KAFKA_CFG_NODE_ID=0
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka:9093
+      # Listeners
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:9092
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+  mongodb:
+    image: mongo
+    networks:
+      - pixogram
+    ports:
+      - "27017:27017"
+    volumes:
+      - 'mongodb_data:/mongodb'
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
+    networks:
+      - pixogram
+    ports:
+      - "1444:1433"
+    environment:
+      SA_PASSWORD: "YourStrong(!)Password"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+
+volumes:
+  kafka_data:
+    driver: local
+  mongodb_data:
+    driver: local 
+  sqlserver-data:
+    driver: local
+
+networks:
+  pixogram:
+    driver: bridge

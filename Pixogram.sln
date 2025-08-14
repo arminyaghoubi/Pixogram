@@ -1,0 +1,107 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35521.163 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1B37A625-5F78-45EF-AB86-6092808A70A0}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E6334D43-EF44-4186-87AC-66F0E2B76D06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS.Core", "CQRS.Core\CQRS.Core.csproj", "{3374FCA7-4716-4BBE-98DB-BC8DD59B13A0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Post", "Post", "{15521417-0801-42CA-B0FD-0D710560514E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Command", "Command", "{0EF15F40-E764-4A45-865A-2AF9FD40BEB3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Query", "Query", "{0ABFD03A-3566-47BD-89EA-E79C74B03D1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixogram.Post.Command.API", "Post\Command\Pixogram.Post.Command.API\Pixogram.Post.Command.API.csproj", "{CC03B0DC-5F3E-42CF-9B58-830B368F4D85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixogram.Post.Command.Domain", "Post\Command\Pixogram.Post.Command.Domain\Pixogram.Post.Command.Domain.csproj", "{B0C93160-C33E-4028-9319-590682766B51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixogram.Post.Command.Infrastructure", "Post\Command\Pixogram.Post.Command.Infrastructure\Pixogram.Post.Command.Infrastructure.csproj", "{442D18FB-6F05-4A5E-B7F3-CB9ED022D9D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixogram.Post.Query.API", "Post\Query\Pixogram.Post.Query.API\Pixogram.Post.Query.API.csproj", "{99D45F8E-9A45-4A40-A096-CD0B2FB312FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixogram.Post.Query.Domain", "Post\Query\Pixogram.Post.Query.Domain\Pixogram.Post.Query.Domain.csproj", "{761598B2-C84D-4DF6-BF2A-EB2105D9F8FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixogram.Post.Query.Infrastructure", "Post\Query\Pixogram.Post.Query.Infrastructure\Pixogram.Post.Query.Infrastructure.csproj", "{CBF18A07-77D1-4E31-ADBA-F3FFEAA1CC84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixogram.Post.Query.Application", "Post\Query\Pixogram.Post.Query.Application\Pixogram.Post.Query.Application.csproj", "{D6816245-9EBB-4770-9193-3E6B07294604}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixogram.Post.Command.Application", "Post\Command\Pixogram.Post.Command.Application\Pixogram.Post.Command.Application.csproj", "{41245405-5D95-4475-AC16-9081B66FE193}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{0F0FA528-16C3-4C0D-B608-7E4C5D13E84F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixogram.Post.Common", "Post\Common\Pixogram.Post.Common\Pixogram.Post.Common.csproj", "{3581EC48-05FE-44DC-A77B-411946A617AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3374FCA7-4716-4BBE-98DB-BC8DD59B13A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3374FCA7-4716-4BBE-98DB-BC8DD59B13A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3374FCA7-4716-4BBE-98DB-BC8DD59B13A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3374FCA7-4716-4BBE-98DB-BC8DD59B13A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC03B0DC-5F3E-42CF-9B58-830B368F4D85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC03B0DC-5F3E-42CF-9B58-830B368F4D85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC03B0DC-5F3E-42CF-9B58-830B368F4D85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC03B0DC-5F3E-42CF-9B58-830B368F4D85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0C93160-C33E-4028-9319-590682766B51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0C93160-C33E-4028-9319-590682766B51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0C93160-C33E-4028-9319-590682766B51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0C93160-C33E-4028-9319-590682766B51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{442D18FB-6F05-4A5E-B7F3-CB9ED022D9D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{442D18FB-6F05-4A5E-B7F3-CB9ED022D9D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{442D18FB-6F05-4A5E-B7F3-CB9ED022D9D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{442D18FB-6F05-4A5E-B7F3-CB9ED022D9D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99D45F8E-9A45-4A40-A096-CD0B2FB312FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99D45F8E-9A45-4A40-A096-CD0B2FB312FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99D45F8E-9A45-4A40-A096-CD0B2FB312FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99D45F8E-9A45-4A40-A096-CD0B2FB312FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{761598B2-C84D-4DF6-BF2A-EB2105D9F8FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{761598B2-C84D-4DF6-BF2A-EB2105D9F8FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{761598B2-C84D-4DF6-BF2A-EB2105D9F8FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{761598B2-C84D-4DF6-BF2A-EB2105D9F8FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBF18A07-77D1-4E31-ADBA-F3FFEAA1CC84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBF18A07-77D1-4E31-ADBA-F3FFEAA1CC84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBF18A07-77D1-4E31-ADBA-F3FFEAA1CC84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBF18A07-77D1-4E31-ADBA-F3FFEAA1CC84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6816245-9EBB-4770-9193-3E6B07294604}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6816245-9EBB-4770-9193-3E6B07294604}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6816245-9EBB-4770-9193-3E6B07294604}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6816245-9EBB-4770-9193-3E6B07294604}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41245405-5D95-4475-AC16-9081B66FE193}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41245405-5D95-4475-AC16-9081B66FE193}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41245405-5D95-4475-AC16-9081B66FE193}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41245405-5D95-4475-AC16-9081B66FE193}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3581EC48-05FE-44DC-A77B-411946A617AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3581EC48-05FE-44DC-A77B-411946A617AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3581EC48-05FE-44DC-A77B-411946A617AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3581EC48-05FE-44DC-A77B-411946A617AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3374FCA7-4716-4BBE-98DB-BC8DD59B13A0} = {E6334D43-EF44-4186-87AC-66F0E2B76D06}
+		{15521417-0801-42CA-B0FD-0D710560514E} = {E6334D43-EF44-4186-87AC-66F0E2B76D06}
+		{0EF15F40-E764-4A45-865A-2AF9FD40BEB3} = {15521417-0801-42CA-B0FD-0D710560514E}
+		{0ABFD03A-3566-47BD-89EA-E79C74B03D1F} = {15521417-0801-42CA-B0FD-0D710560514E}
+		{CC03B0DC-5F3E-42CF-9B58-830B368F4D85} = {0EF15F40-E764-4A45-865A-2AF9FD40BEB3}
+		{B0C93160-C33E-4028-9319-590682766B51} = {0EF15F40-E764-4A45-865A-2AF9FD40BEB3}
+		{442D18FB-6F05-4A5E-B7F3-CB9ED022D9D8} = {0EF15F40-E764-4A45-865A-2AF9FD40BEB3}
+		{99D45F8E-9A45-4A40-A096-CD0B2FB312FF} = {0ABFD03A-3566-47BD-89EA-E79C74B03D1F}
+		{761598B2-C84D-4DF6-BF2A-EB2105D9F8FA} = {0ABFD03A-3566-47BD-89EA-E79C74B03D1F}
+		{CBF18A07-77D1-4E31-ADBA-F3FFEAA1CC84} = {0ABFD03A-3566-47BD-89EA-E79C74B03D1F}
+		{D6816245-9EBB-4770-9193-3E6B07294604} = {0ABFD03A-3566-47BD-89EA-E79C74B03D1F}
+		{41245405-5D95-4475-AC16-9081B66FE193} = {0EF15F40-E764-4A45-865A-2AF9FD40BEB3}
+		{0F0FA528-16C3-4C0D-B608-7E4C5D13E84F} = {15521417-0801-42CA-B0FD-0D710560514E}
+		{3581EC48-05FE-44DC-A77B-411946A617AD} = {0F0FA528-16C3-4C0D-B608-7E4C5D13E84F}
+	EndGlobalSection
+EndGlobal
