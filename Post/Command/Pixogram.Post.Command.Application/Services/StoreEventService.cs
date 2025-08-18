@@ -19,7 +19,7 @@ public class StoreEventService : IStoreEventService
     {
         var eventStream = await _eventStoreRepository.FindByAggreageIdAsync(aggregateId);
 
-        if (eventStream == null || !eventStream.Any())
+        if (eventStream == null || eventStream.Count == 0)
             throw new AggregateNotFoundException($"Invalid Post ID = {aggregateId}.");
 
         return eventStream
