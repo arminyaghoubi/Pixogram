@@ -1,9 +1,12 @@
-﻿using CQRS.Core.Infrastructure;
+﻿using Confluent.Kafka;
+using CQRS.Core.Infrastructure;
 using CQRS.Core.Messages.Events;
+using CQRS.Core.Producers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using Pixogram.Post.Command.Infrastructure.Configurations;
+using Pixogram.Post.Command.Infrastructure.Producers;
 using Pixogram.Post.Command.Infrastructure.Repositories;
 
 namespace Pixogram.Post.Command.Infrastructure;
@@ -14,6 +17,7 @@ public static class InfrastructureServiceRegistration
         this IServiceCollection services,
         IConfiguration configuration)
     {
+        services.Configure<ProducerConfig>(configuration.GetSection(nameof(ProducerConfig)));
         services.Configure<MongoDbConfiguration>(configuration.GetSection(MongoDbConfiguration.SectionName));
         services.AddScoped<IMongoCollection<EventModel>>(p =>
         {
@@ -28,6 +32,7 @@ public static class InfrastructureServiceRegistration
         });
 
         services.AddScoped<IEventStoreRepository, EventStoreRepository>();
+        services.AddScoped<IEventProducer, EventProducer>();
 
         return services;
     }

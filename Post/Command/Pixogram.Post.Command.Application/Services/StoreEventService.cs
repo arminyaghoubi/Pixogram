@@ -2,6 +2,7 @@
 using CQRS.Core.Exceptions;
 using CQRS.Core.Infrastructure;
 using CQRS.Core.Messages.Events;
+using CQRS.Core.Producers;
 using Pixogram.Post.Command.Domain.Aggregates;
 
 namespace Pixogram.Post.Command.Application.Services;
@@ -9,10 +10,14 @@ namespace Pixogram.Post.Command.Application.Services;
 public class StoreEventService : IStoreEventService
 {
     private readonly IEventStoreRepository _eventStoreRepository;
+    private readonly IEventProducer _eventProducer;
 
-    public StoreEventService(IEventStoreRepository eventStoreRepository)
+    public StoreEventService(
+        IEventStoreRepository eventStoreRepository,
+        IEventProducer eventProducer)
     {
         _eventStoreRepository = eventStoreRepository;
+        _eventProducer = eventProducer;
     }
 
     public async Task<List<BaseEvent>> GetEventsAsync(Guid aggregateId)
@@ -52,6 +57,9 @@ public class StoreEventService : IStoreEventService
             };
 
             await _eventStoreRepository.SaveAsync(eventModel);
+
+            var topic = Environment.GetEnvironmentVariable("KAFKA_TOPIC");
+            await _eventProducer.ProduceAsync(topic, @event);
         }
     }
 }
