@@ -22,7 +22,7 @@ public class CommentRepository : ICommentRepository
 
     public async Task DeleteAsync(Guid commentId)
     {
-        var comment= await _context.Comments.FindAsync(commentId);
+        var comment = await _context.Comments.FindAsync(commentId);
         if (comment != null)
         {
             _context.Remove(comment);
@@ -32,12 +32,21 @@ public class CommentRepository : ICommentRepository
 
     public async Task<IEnumerable<CommentEntity>> GetAllCommentsFromPostAsync(Guid postId)
     {
-        var comments= await _context.Comments
+        var comments = await _context.Comments
             .AsNoTracking()
             .Where(c => c.PostId == postId)
             .ToListAsync();
 
         return comments;
+    }
+
+    public async Task<CommentEntity?> GetCommentByIdAsync(Guid commentId)
+    {
+        var comment = await _context.Comments
+            .AsNoTracking()
+            .FirstOrDefaultAsync(c => c.Id == commentId);
+
+        return comment;
     }
 
     public async Task UpdateAsync(CommentEntity comment)

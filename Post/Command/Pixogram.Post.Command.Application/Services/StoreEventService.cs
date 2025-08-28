@@ -58,7 +58,7 @@ public class StoreEventService : IStoreEventService
 
             await _eventStoreRepository.SaveAsync(eventModel);
 
-            var topic = Environment.GetEnvironmentVariable("KAFKA_TOPIC");
+            var topic = Environment.GetEnvironmentVariable("KAFKA_TOPIC") ?? throw new ArgumentNullException("KAFKA_TOPIC Not Found!");
             await _eventProducer.ProduceAsync(topic, @event);
         }
     }

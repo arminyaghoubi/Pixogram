@@ -4,6 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Pixogram.Post.Query.Domain.Contracts.Repositories;
 using Pixogram.Post.Query.Infrastructure.Repositories;
+using Confluent.Kafka;
+using Pixogram.Post.Query.Infrastructure.Consumers;
+using CQRS.Core.Consumers;
+using Pixogram.Post.Query.Application.Contracts.Handlers;
 
 namespace Pixogram.Post.Query.Infrastructure;
 
@@ -16,6 +20,9 @@ public static class InfrastructureServiceRegistration
         services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("Pixogram")));
         services.AddScoped<IPostRepository, PostRepository>();
         services.AddScoped<ICommentRepository, CommentRepository>();
+        services.Configure<ConsumerConfig>(configuration.GetSection(nameof(ConsumerConfig)));
+        services.AddScoped<IEventConsumer, EventConsumer>();
+        services.AddHostedService<EventConsumerHostedService>();
 
         return services;
     }

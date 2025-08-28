@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Pixogram.Post.Query.Application\Pixogram.Post.Query.Application.csproj" />
     <ProjectReference Include="..\Pixogram.Post.Query.Infrastructure\Pixogram.Post.Query.Infrastructure.csproj" />
   </ItemGroup>
 
