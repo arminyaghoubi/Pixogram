@@ -54,7 +54,7 @@ public class PostRepository : IPostRepository
         return posts;
     }
 
-    public async Task<PostEntity?> GetPostEntityAsync(Guid postId, bool withComment = false)
+    public async Task<PostEntity?> GetPostByIdAsync(Guid postId, bool withComment = false)
     {
         var query= _context.Posts.AsNoTracking();
         if (withComment)

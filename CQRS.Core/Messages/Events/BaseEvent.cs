@@ -1,6 +1,6 @@
 ﻿namespace CQRS.Core.Messages.Events;
 
-public abstract class BaseEvent:Message
+public abstract class BaseEvent : Message
 {
     protected BaseEvent()
     {
