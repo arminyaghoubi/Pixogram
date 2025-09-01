@@ -4,6 +4,10 @@ using CQRS.Core.Messages.Events;
 using CQRS.Core.Producers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using Pixogram.Post.Command.Infrastructure.Configurations;
 using Pixogram.Post.Command.Infrastructure.Producers;
@@ -17,12 +21,14 @@ public static class InfrastructureServiceRegistration
         this IServiceCollection services,
         IConfiguration configuration)
     {
+        BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+
         services.Configure<ProducerConfig>(configuration.GetSection(nameof(ProducerConfig)));
         services.Configure<MongoDbConfiguration>(configuration.GetSection(MongoDbConfiguration.SectionName));
         services.AddScoped<IMongoCollection<EventModel>>(p =>
         {
             using var scope = p.CreateScope();
-            var mongoConfig = scope.ServiceProvider.GetService<MongoDbConfiguration>() ?? throw new ArgumentNullException("MongoDbConfig Not Found.");
+            var mongoConfig = scope.ServiceProvider.GetService<IOptions<MongoDbConfiguration>>()?.Value ?? throw new ArgumentNullException("MongoDbConfig Not Found.");
 
             var mongoClient = new MongoClient(mongoConfig.ConnectionString);
             var database = mongoClient.GetDatabase(mongoConfig.Database);

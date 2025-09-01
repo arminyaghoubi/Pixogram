@@ -1,9 +1,12 @@
 using Pixogram.Post.Command.Infrastructure;
+using Pixogram.Post.Command.API.Endpoints;
+using Pixogram.Post.Command.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddInfrastructureServices(builder.Configuration)
+    .AddApplicationServices();
 
 var app = builder.Build();
 
@@ -28,6 +31,8 @@ app.MapGet("/weatherforecast", () =>
         .ToArray();
     return forecast;
 });
+
+app.MapPostEndpoints();
 
 app.Run();
 
