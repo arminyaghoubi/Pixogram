@@ -37,7 +37,7 @@ public class StoreEventService : IStoreEventService
     {
         var eventStream = await _eventStoreRepository.FindByAggreageIdAsync(aggregateId);
 
-        if (expectVersion != -1 && eventStream[^1].Version == expectVersion)
+        if (expectVersion != -1 && eventStream[^1].Version != expectVersion)
             throw new ConcurrencyException();
 
         var version = expectVersion;

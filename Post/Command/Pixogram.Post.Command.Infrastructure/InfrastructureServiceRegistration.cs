@@ -12,6 +12,7 @@ using MongoDB.Driver;
 using Pixogram.Post.Command.Infrastructure.Configurations;
 using Pixogram.Post.Command.Infrastructure.Producers;
 using Pixogram.Post.Command.Infrastructure.Repositories;
+using Pixogram.Post.Common.Events;
 
 namespace Pixogram.Post.Command.Infrastructure;
 
@@ -22,6 +23,14 @@ public static class InfrastructureServiceRegistration
         IConfiguration configuration)
     {
         BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+        BsonClassMap.RegisterClassMap<BaseEvent>();
+        BsonClassMap.RegisterClassMap<PostCreatedEvent>();
+        BsonClassMap.RegisterClassMap<PostUpdatedEvent>();
+        BsonClassMap.RegisterClassMap<PostDeletedEvent>();
+        BsonClassMap.RegisterClassMap<PostLikedEvent>();
+        BsonClassMap.RegisterClassMap<CommentAddedEvent>();
+        BsonClassMap.RegisterClassMap<CommentUpdatedEvent>();
+        BsonClassMap.RegisterClassMap<CommentDeletedEvent>();
 
         services.Configure<ProducerConfig>(configuration.GetSection(nameof(ProducerConfig)));
         services.Configure<MongoDbConfiguration>(configuration.GetSection(MongoDbConfiguration.SectionName));

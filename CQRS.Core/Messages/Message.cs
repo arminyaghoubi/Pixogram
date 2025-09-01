@@ -1,4 +1,7 @@
-﻿namespace CQRS.Core.Messages;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
+
+namespace CQRS.Core.Messages;
 
 public abstract class Message
 {

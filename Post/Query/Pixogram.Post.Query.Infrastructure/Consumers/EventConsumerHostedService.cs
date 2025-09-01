@@ -16,11 +16,11 @@ public class EventConsumerHostedService(
     {
         _logger.LogInformation("Event Consumer Started...");
 
-        using var scope = _provider.CreateScope();
-        var consumer = scope.ServiceProvider.GetRequiredService<IEventConsumer>();
         var topic = Environment.GetEnvironmentVariable("KAFKA_TOPIC") ?? throw new ArgumentNullException("KAFKA_TOPIC Not Found!");
         Task.Run(() =>
         {
+            using var scope = _provider.CreateScope();
+            var consumer = scope.ServiceProvider.GetRequiredService<IEventConsumer>();
             consumer.Consume(topic, cancellationToken);
         });
 
