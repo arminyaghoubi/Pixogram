@@ -18,7 +18,7 @@ public abstract class AggregateRoot
     private void ApplyChanges(BaseEvent @event, bool isNew)
     {
         var method = GetType().GetMethod("Apply", new Type[] { @event.GetType() }) ??
-            throw new ArgumentNullException($"The Apply method was not found in the aggregate for {@event.GetType().Name}"); ;
+            throw new ArgumentNullException($"The Apply method was not found in the aggregate for {@event.GetType().Name}");
 
 
         method.Invoke(this, new object[] { @event });

@@ -23,7 +23,7 @@ public class CommandHandler : ICommandHandler
     public async Task HandleAsync(DeleteCommentCommand command)
     {
         var aggregate = await _eventSourcingHandler.GetByIdAsync(command.Id);
-        aggregate.RemoveComment(aggregate.Id, command.Username);
+        aggregate.RemoveComment(command.CommentId, command.Username);
 
         await _eventSourcingHandler.SaveAsync(aggregate);
     }

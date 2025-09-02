@@ -32,7 +32,8 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 });
 
-app.MapPostEndpoints();
+app.MapPostEndpoints()
+   .MapCommentEndpoints();
 
 app.Run();
 

@@ -7,7 +7,7 @@ namespace Pixogram.Post.Command.API.Endpoints;
 
 public static class PostEndpoints
 {
-    public static void MapPostEndpoints(this IEndpointRouteBuilder endpoint)
+    public static IEndpointRouteBuilder MapPostEndpoints(this IEndpointRouteBuilder endpoint)
     {
         var group = endpoint.MapGroup("/api/v1/Post");
 
@@ -18,7 +18,7 @@ public static class PostEndpoints
             command.Id = Guid.NewGuid();
             await dispatcher.SendAsync(command);
             var response = new NewPostResponse(command.Id, "New post creation request completed successfully.");
-            return Results.Created($"/api/v1/Post?PostId={response.PostId}", response);
+            return Results.Created("", response);
         });
 
         group.MapPut("/", async (
@@ -41,13 +41,13 @@ public static class PostEndpoints
 
         group.MapDelete("/", async (
             ICommandDispatcher dispatcher,
-            [FromQuery] Guid postId,
-            [FromQuery] string username) =>
+            [FromBody]DeletePostCommand command) =>
         {
-            var command = new DeletePostCommand { Id = postId ,Username=username};
             await dispatcher.SendAsync(command);
             DeletePostResponse response = new(command.Id, "Delete request completed successfully.");
-            return Results.Ok();
+            return Results.Ok(response);
         });
+
+        return endpoint;
     }
 }

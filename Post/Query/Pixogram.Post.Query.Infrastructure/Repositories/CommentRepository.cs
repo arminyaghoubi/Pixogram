@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Pixogram.Post.Query.Domain.Contracts.Repositories;
 using Pixogram.Post.Query.Domain.Entities;
 using Pixogram.Post.Query.Infrastructure.Contexts;
@@ -7,32 +8,41 @@ namespace Pixogram.Post.Query.Infrastructure.Repositories;
 
 public class CommentRepository : ICommentRepository
 {
-    private readonly ApplicationDbContext _context;
+    private readonly IServiceScopeFactory _scopeFactory;
 
-    public CommentRepository(ApplicationDbContext context)
+    public CommentRepository(IServiceScopeFactory scopeFactory)
     {
-        _context = context;
+        _scopeFactory = scopeFactory;
     }
 
     public async Task CreateAsync(CommentEntity comment)
     {
-        await _context.AddAsync(comment);
-        await _context.SaveChangesAsync();
+        using var scope = _scopeFactory.CreateScope();
+        var context= scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+        await context.AddAsync(comment);
+        await context.SaveChangesAsync();
     }
 
     public async Task DeleteAsync(Guid commentId)
     {
-        var comment = await _context.Comments.FindAsync(commentId);
+        using var scope = _scopeFactory.CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+        var comment = await context.Comments.FindAsync(commentId);
         if (comment != null)
         {
-            _context.Remove(comment);
-            await _context.SaveChangesAsync();
+            context.Remove(comment);
+            await context.SaveChangesAsync();
         }
     }
 
     public async Task<IEnumerable<CommentEntity>> GetAllCommentsFromPostAsync(Guid postId)
     {
-        var comments = await _context.Comments
+        using var scope = _scopeFactory.CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+        var comments = await context.Comments
             .AsNoTracking()
             .Where(c => c.PostId == postId)
             .ToListAsync();
@@ -42,7 +52,10 @@ public class CommentRepository : ICommentRepository
 
     public async Task<CommentEntity?> GetCommentByIdAsync(Guid commentId)
     {
-        var comment = await _context.Comments
+        using var scope = _scopeFactory.CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+        var comment = await context.Comments
             .AsNoTracking()
             .FirstOrDefaultAsync(c => c.Id == commentId);
 
@@ -51,7 +64,10 @@ public class CommentRepository : ICommentRepository
 
     public async Task UpdateAsync(CommentEntity comment)
     {
-        _context.Update(comment);
-        await _context.SaveChangesAsync();
+        using var scope = _scopeFactory.CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+        context.Update(comment);
+        await context.SaveChangesAsync();
     }
 }

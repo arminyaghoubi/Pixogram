@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Pixogram.Post.Query.Domain.Contracts.Repositories;
 using Pixogram.Post.Query.Domain.Entities;
 using Pixogram.Post.Query.Infrastructure.Contexts;
@@ -7,33 +8,42 @@ namespace Pixogram.Post.Query.Infrastructure.Repositories;
 
 public class PostRepository : IPostRepository
 {
-    private readonly ApplicationDbContext _context;
+    private readonly IServiceScopeFactory _scopeFactory;
 
-    public PostRepository(ApplicationDbContext context)
+    public PostRepository(IServiceScopeFactory scopeFactory)
     {
-        _context = context;
+        _scopeFactory = scopeFactory;
     }
 
     public async Task CreateAsync(PostEntity post)
     {
-        await _context.AddAsync(post);
-        await _context.SaveChangesAsync();
+        using var scope = _scopeFactory.CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+        await context.AddAsync(post);
+        await context.SaveChangesAsync();
     }
 
     public async Task DeleteAsync(Guid postId)
     {
-        var post = await _context.Posts.FindAsync(postId);
+        using var scope = _scopeFactory.CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+        var post = await context.Posts.FindAsync(postId);
         if (post == null)
             return;
 
-        _context.Remove(post);
-        await _context.SaveChangesAsync();
+        context.Remove(post);
+        await context.SaveChangesAsync();
 
     }
 
     public async Task<IEnumerable<PostEntity>> GetAllPostsAsync(int page, int pageSize)
     {
-        var posts = await _context.Posts
+        using var scope = _scopeFactory.CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+        var posts = await context.Posts
             .AsNoTracking()
             .OrderByDescending(p => p.DatePosted)
             .Skip((page - 1) * pageSize)
@@ -45,7 +55,10 @@ public class PostRepository : IPostRepository
 
     public async Task<IEnumerable<PostEntity>> GetAllPostsFromAuthorAsync(string author)
     {
-        var posts = await _context.Posts
+        using var scope = _scopeFactory.CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+        var posts = await context.Posts
             .AsNoTracking()
             .Where(p => p.Author == author)
             .OrderByDescending(p => p.DatePosted)
@@ -56,7 +69,10 @@ public class PostRepository : IPostRepository
 
     public async Task<PostEntity?> GetPostByIdAsync(Guid postId, bool withComment = false)
     {
-        var query= _context.Posts.AsNoTracking();
+        using var scope = _scopeFactory.CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+        var query= context.Posts.AsNoTracking();
         if (withComment)
             query = query.Include(p => p.Comments);
 
@@ -66,7 +82,10 @@ public class PostRepository : IPostRepository
 
     public async Task UpdateAsync(PostEntity post)
     {
-        _context.Update(post);
-        await _context.SaveChangesAsync();
+        using var scope = _scopeFactory.CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+        context.Update(post);
+        await context.SaveChangesAsync();
     }
 }

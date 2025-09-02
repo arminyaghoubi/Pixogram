@@ -15,7 +15,7 @@ public class EventConsumer(
     private readonly ConsumerConfig _config = config.Value;
     private readonly IEventHandler _eventHandler = eventHandler;
 
-    public void Consume(string topic, CancellationToken cancellation)
+    public async void Consume(string topic, CancellationToken cancellation)
     {
         using var consumer = new ConsumerBuilder<string, string>(_config)
             .SetKeyDeserializer(Deserializers.Utf8)
