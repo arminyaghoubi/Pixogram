@@ -22,7 +22,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\CQRS.Core\CQRS.Core.csproj" />
     <ProjectReference Include="..\..\Common\Pixogram.Post.Common\Pixogram.Post.Common.csproj" />
-    <ProjectReference Include="..\Pixogram.Post.Query.Application\Pixogram.Post.Query.Application.csproj" />
     <ProjectReference Include="..\Pixogram.Post.Query.Domain\Pixogram.Post.Query.Domain.csproj" />
   </ItemGroup>
 

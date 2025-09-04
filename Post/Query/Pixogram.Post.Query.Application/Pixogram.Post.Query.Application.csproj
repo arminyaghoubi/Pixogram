@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Pixogram.Post.Common\Pixogram.Post.Common.csproj" />
     <ProjectReference Include="..\Pixogram.Post.Query.Domain\Pixogram.Post.Query.Domain.csproj" />
+    <ProjectReference Include="..\Pixogram.Post.Query.Infrastructure\Pixogram.Post.Query.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

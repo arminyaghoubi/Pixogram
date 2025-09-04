@@ -21,7 +21,7 @@ public abstract class AggregateRoot
             throw new ArgumentNullException($"The Apply method was not found in the aggregate for {@event.GetType().Name}");
 
 
-        method.Invoke(this, new object[] { @event });
+        method.Invoke(this, [@event]);
 
         if (isNew)
             _uncommitedChanges.Add(@event);

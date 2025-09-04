@@ -2,7 +2,7 @@
 using CQRS.Core.Consumers;
 using CQRS.Core.Messages.Events;
 using Microsoft.Extensions.Options;
-using Pixogram.Post.Query.Application.Contracts.Handlers;
+using Pixogram.Post.Query.Infrastructure.Handlers;
 using Pixogram.Post.Query.Infrastructure.Converters;
 using System.Text.Json;
 

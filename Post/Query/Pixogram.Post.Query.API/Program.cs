@@ -1,3 +1,4 @@
+using Pixogram.Post.Query.API.Endpoints;
 using Pixogram.Post.Query.Application;
 using Pixogram.Post.Query.Infrastructure;
 
@@ -30,6 +31,8 @@ app.MapGet("/weatherforecast", () =>
         .ToArray();
     return forecast;
 });
+
+app.MapPostEndpoints();
 
 app.Run();
 

@@ -7,7 +7,6 @@ using Pixogram.Post.Query.Infrastructure.Repositories;
 using Confluent.Kafka;
 using Pixogram.Post.Query.Infrastructure.Consumers;
 using CQRS.Core.Consumers;
-using Pixogram.Post.Query.Application.Contracts.Handlers;
 
 namespace Pixogram.Post.Query.Infrastructure;
 
