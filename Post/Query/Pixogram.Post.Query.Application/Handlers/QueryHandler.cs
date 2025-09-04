@@ -24,13 +24,21 @@ public class QueryHandler : IQueryHandler
         return posts;
     }
 
-    public Task<PostEntity> HandlerAsync(FindPostByIdQuery query)
+    public async Task<PostEntity> HandlerAsync(FindPostByIdQuery query)
     {
-        throw new NotImplementedException();
+        var post = await _postRepository.GetPostByIdAsync(query.PostId);
+        return post;
     }
 
-    public Task<IEnumerable<PostEntity>> HandlerAsync(FindPostsByAuthorQuery query)
+    public async Task<IEnumerable<PostEntity>> HandlerAsync(FindPostsByAuthorQuery query)
     {
-        throw new NotImplementedException();
+        var posts = await _postRepository.GetAllPostsFromAuthorAsync(query.Author);
+        return posts;
+    }
+
+    public async Task<IEnumerable<CommentEntity>> HandlerAsync(FindCommentsByPostIdQuery query)
+    {
+        var comments = await _commentRepository.GetAllCommentsFromPostAsync(query.PostId, query.Page, query.PageSize);
+        return comments;
     }
 }

@@ -31,6 +31,7 @@ public static class ApplicationServiceRegistration
         dispatcher.RegisterHandler<FindAllPostsQuery, IEnumerable<PostEntity>>(queryHandler.HandlerAsync);
         dispatcher.RegisterHandler<FindPostByIdQuery, PostEntity>(queryHandler.HandlerAsync);
         dispatcher.RegisterHandler<FindPostsByAuthorQuery, IEnumerable<PostEntity>>(queryHandler.HandlerAsync);
+        dispatcher.RegisterHandler<FindCommentsByPostIdQuery, IEnumerable<CommentEntity>>(queryHandler.HandlerAsync);
 
         return dispatcher;
     }

@@ -3,4 +3,4 @@ using Pixogram.Post.Query.Domain.Entities;
 
 namespace Pixogram.Post.Query.Application.Queries;
 
-public record FindPostsByAuthorQuery(string Author) : BaseQuery<IEnumerable<PostEntity>>;
+public record FindCommentsByPostIdQuery(Guid PostId, int Page, int PageSize) : BaseQuery<IEnumerable<CommentEntity>>;

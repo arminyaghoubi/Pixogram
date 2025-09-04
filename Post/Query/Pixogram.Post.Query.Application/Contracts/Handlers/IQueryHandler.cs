@@ -8,4 +8,5 @@ public interface IQueryHandler
     Task<IEnumerable<PostEntity>> HandlerAsync(FindAllPostsQuery query);
     Task<PostEntity> HandlerAsync(FindPostByIdQuery query);
     Task<IEnumerable<PostEntity>> HandlerAsync(FindPostsByAuthorQuery query);
+    Task<IEnumerable<CommentEntity>> HandlerAsync(FindCommentsByPostIdQuery query);
 }

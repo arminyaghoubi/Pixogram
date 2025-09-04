@@ -37,7 +37,7 @@ public class CommentRepository : ICommentRepository
         }
     }
 
-    public async Task<IEnumerable<CommentEntity>> GetAllCommentsFromPostAsync(Guid postId)
+    public async Task<IEnumerable<CommentEntity>> GetAllCommentsFromPostAsync(Guid postId,int page,int pageSize)
     {
         using var scope = _scopeFactory.CreateScope();
         var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
@@ -45,6 +45,8 @@ public class CommentRepository : ICommentRepository
         var comments = await context.Comments
             .AsNoTracking()
             .Where(c => c.PostId == postId)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
             .ToListAsync();
 
         return comments;

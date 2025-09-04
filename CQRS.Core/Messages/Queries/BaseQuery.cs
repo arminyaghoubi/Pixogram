@@ -1,5 +1,3 @@
 ﻿namespace CQRS.Core.Messages.Queries;
 
-public abstract class BaseQuery<TResult>
-{
-}
+public abstract record BaseQuery<TResult>;
