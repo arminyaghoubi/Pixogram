@@ -38,6 +38,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{0F0FA5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixogram.Post.Common", "Post\Common\Pixogram.Post.Common\Pixogram.Post.Common.csproj", "{3581EC48-05FE-44DC-A77B-411946A617AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway", "Gateway\Gateway.csproj", "{DDFDA697-61FC-48A5-B568-D5F2F2EF7F60}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,6 +86,10 @@ Global
 		{3581EC48-05FE-44DC-A77B-411946A617AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3581EC48-05FE-44DC-A77B-411946A617AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3581EC48-05FE-44DC-A77B-411946A617AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDFDA697-61FC-48A5-B568-D5F2F2EF7F60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDFDA697-61FC-48A5-B568-D5F2F2EF7F60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDFDA697-61FC-48A5-B568-D5F2F2EF7F60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDFDA697-61FC-48A5-B568-D5F2F2EF7F60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,5 +109,6 @@ Global
 		{41245405-5D95-4475-AC16-9081B66FE193} = {0EF15F40-E764-4A45-865A-2AF9FD40BEB3}
 		{0F0FA528-16C3-4C0D-B608-7E4C5D13E84F} = {15521417-0801-42CA-B0FD-0D710560514E}
 		{3581EC48-05FE-44DC-A77B-411946A617AD} = {0F0FA528-16C3-4C0D-B608-7E4C5D13E84F}
+		{DDFDA697-61FC-48A5-B568-D5F2F2EF7F60} = {E6334D43-EF44-4186-87AC-66F0E2B76D06}
 	EndGlobalSection
 EndGlobal
