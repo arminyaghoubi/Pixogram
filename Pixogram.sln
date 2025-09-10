@@ -40,6 +40,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixogram.Post.Common", "Pos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway", "Gateway\Gateway.csproj", "{DDFDA697-61FC-48A5-B568-D5F2F2EF7F60}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{1C1FFCB2-595A-47BE-86E7-2DA6CBA25E8F}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\Tutorial\Youtube\DesignPatterns\CQRS\Pixogram.postman_collection.json = ..\..\..\..\..\Tutorial\Youtube\DesignPatterns\CQRS\Pixogram.postman_collection.json
+		..\..\..\..\..\Tutorial\Youtube\DesignPatterns\CQRS\PixogramDiagram.png = ..\..\..\..\..\Tutorial\Youtube\DesignPatterns\CQRS\PixogramDiagram.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
