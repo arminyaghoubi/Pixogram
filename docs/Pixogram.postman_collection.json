@@ -1,0 +1,383 @@
+{
+	"info": {
+		"_postman_id": "82f73127-6cb2-43f0-9596-e74881de84b1",
+		"name": "Pixogram",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8592682"
+	},
+	"item": [
+		{
+			"name": "Command",
+			"item": [
+				{
+					"name": "Edit Post",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": \"4c847c2c-3095-4555-9f2c-4aed019a55a1\",\r\n    \"Message\": \"Armin Post for Edited Test.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GatewayBaseURL}}/api/v1/Post",
+							"host": [
+								"{{GatewayBaseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Like Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": \"c9af6c52-14f1-4740-9f50-98a37247e1df\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GatewayBaseURL}}/api/v1/Post/Like",
+							"host": [
+								"{{GatewayBaseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Post",
+								"Like"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"9d78f2a2-1f7f-4749-802c-d5042f9e71d6\",\r\n    \"username\": \"ArminYaghoubi1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GatewayBaseURL}}/api/v1/Post",
+							"host": [
+								"{{GatewayBaseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Post"
+							],
+							"query": [
+								{
+									"key": "postId",
+									"value": "4C847C2C-3095-4555-9F2C-4AED019A55A1",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "Arash",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Comment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\":\"4c847c2c-3095-4555-9f2c-4aed019a55a1\",\r\n    \"Username\":\"Shayan\",\r\n    \"Message\":\"New Comment for Test.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GatewayBaseURL}}/api/v1/Comment",
+							"host": [
+								"{{GatewayBaseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Comment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": \"4C847C2C-3095-4555-9F2C-4AED019A55A1\",\r\n    \"CommentId\": \"FB5F1BB4-5EF5-41CD-9486-4448CE9DF458\",\r\n    \"Username\": \"Shayan\",\r\n    \"Message\": \"Edit 6 Comment for Test.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GatewayBaseURL}}/api/v1/Comment",
+							"host": [
+								"{{GatewayBaseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Comment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": \"4C847C2C-3095-4555-9F2C-4AED019A55A1\",\r\n    \"CommentId\": \"FB5F1BB4-5EF5-41CD-9486-4448CE9DF458\",\r\n    \"Username\":\"Shayan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GatewayBaseURL}}/api/v1/Comment",
+							"host": [
+								"{{GatewayBaseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Comment"
+							],
+							"query": [
+								{
+									"key": "PostId",
+									"value": "078b8d1f-d0e1-4863-800d-ea0bd41c6059",
+									"disabled": true
+								},
+								{
+									"key": "commentId",
+									"value": "d4f6c6da-65a1-459d-9153-7128611c4a45",
+									"disabled": true
+								},
+								{
+									"key": "Username",
+									"value": "ArminYaghoubi1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Username\": \"ArminYaghoubi1\",\r\n    \"Message\": \"First Arash Post for Test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GatewayBaseURL}}/api/v1/Post",
+							"host": [
+								"{{GatewayBaseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Post"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Query",
+			"item": [
+				{
+					"name": "GetAllPost",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{GatewayBaseURL}}/api/v1/Post?Page=1&PageSize=10",
+							"host": [
+								"{{GatewayBaseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Post"
+							],
+							"query": [
+								{
+									"key": "Page",
+									"value": "1"
+								},
+								{
+									"key": "PageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPostById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{GatewayBaseURL}}/api/v1/Post/c9af6c52-14f1-4740-9f50-98a37247e1df",
+							"host": [
+								"{{GatewayBaseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Post",
+								"c9af6c52-14f1-4740-9f50-98a37247e1df"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllPostAuthor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{GatewayBaseURL}}/api/v1/Post/Author?Username=ArminYaghoubi1",
+							"host": [
+								"{{GatewayBaseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Post",
+								"Author"
+							],
+							"query": [
+								{
+									"key": "Username",
+									"value": "ArminYaghoubi1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllComments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{GatewayBaseURL}}/api/v1/Comment?PostId=c9af6c52-14f1-4740-9f50-98a37247e1df&Page=1&PageSize=10",
+							"host": [
+								"{{GatewayBaseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Comment"
+							],
+							"query": [
+								{
+									"key": "PostId",
+									"value": "c9af6c52-14f1-4740-9f50-98a37247e1df"
+								},
+								{
+									"key": "Page",
+									"value": "1"
+								},
+								{
+									"key": "PageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "GatewayBaseURL",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
