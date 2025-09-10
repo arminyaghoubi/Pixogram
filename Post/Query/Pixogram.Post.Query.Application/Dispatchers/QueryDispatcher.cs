@@ -1,7 +1,7 @@
 ﻿using CQRS.Core.Infrastructure;
 using CQRS.Core.Messages.Queries;
 
-namespace Pixogram.Post.Query.Infrastructure.Dispatchers;
+namespace Pixogram.Post.Query.Application.Dispatchers;
 
 public class QueryDispatcher : IQueryDispatcher
 {

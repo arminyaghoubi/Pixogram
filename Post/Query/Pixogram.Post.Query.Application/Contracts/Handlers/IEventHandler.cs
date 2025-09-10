@@ -1,6 +1,6 @@
 ﻿using Pixogram.Post.Common.Events;
 
-namespace Pixogram.Post.Query.Infrastructure.Handlers;
+namespace Pixogram.Post.Query.Application.Contracts.Handlers;
 
 public interface IEventHandler
 {

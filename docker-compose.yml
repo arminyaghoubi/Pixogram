@@ -40,6 +40,12 @@ services:
     volumes:
       - sqlserver-data:/var/opt/mssql
 
+  redis-server:
+    image: redis
+    container_name: redis-server
+    ports:
+      - "6379:6379"
+
 volumes:
   kafka_data:
     driver: local

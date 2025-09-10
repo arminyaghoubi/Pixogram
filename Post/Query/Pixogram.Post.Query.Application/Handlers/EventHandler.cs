@@ -1,5 +1,5 @@
 ﻿using Pixogram.Post.Common.Events;
-using Pixogram.Post.Query.Infrastructure.Handlers;
+using Pixogram.Post.Query.Application.Contracts.Handlers;
 using Pixogram.Post.Query.Domain.Contracts.Repositories;
 using Pixogram.Post.Query.Domain.Entities;
 

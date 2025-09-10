@@ -4,8 +4,7 @@ using Pixogram.Post.Query.Application.Contracts.Handlers;
 using Pixogram.Post.Query.Application.Handlers;
 using Pixogram.Post.Query.Application.Queries;
 using Pixogram.Post.Query.Domain.Entities;
-using Pixogram.Post.Query.Infrastructure.Dispatchers;
-using Pixogram.Post.Query.Infrastructure.Handlers;
+using Pixogram.Post.Query.Application.Dispatchers;
 
 namespace Pixogram.Post.Query.Application;
 
@@ -29,7 +28,7 @@ public static class ApplicationServiceRegistration
         QueryDispatcher dispatcher = new();
 
         dispatcher.RegisterHandler<FindAllPostsQuery, IEnumerable<PostEntity>>(queryHandler.HandlerAsync);
-        dispatcher.RegisterHandler<FindPostByIdQuery, PostEntity>(queryHandler.HandlerAsync);
+        dispatcher.RegisterHandler<FindPostByIdQuery, PostEntity?>(queryHandler.HandlerAsync);
         dispatcher.RegisterHandler<FindPostsByAuthorQuery, IEnumerable<PostEntity>>(queryHandler.HandlerAsync);
         dispatcher.RegisterHandler<FindCommentsByPostIdQuery, IEnumerable<CommentEntity>>(queryHandler.HandlerAsync);
 
